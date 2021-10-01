@@ -1,38 +1,167 @@
-.App {
-  text-align: center;
+.mainLogo {
+  height: 40px;
+  width: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.cardBody {
+  
+  margin-top: 1rem;
+  order: 2;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.cardBodyMore {
+  order: 3 !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.mainContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.leftBox {
+  
+  order: 1;
+  background-color: white !important;
+  border-radius: 5px;
+  width: 300px;
+  height: auto;
+  margin-right: 2rem;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+.login{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  
+}
+.loading {
+  position: fixed;
+  top: 130px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.petProfile {
+  height: 30vh;
+}
+.drawerAvater {
+  display: flex;
+
+}
+
+
+/* ----- */
+
+.r-link{
+	display: var(--rLinkDisplay, inline-flex) !important;
+}
+
+.r-link[href]{
+	color: var(--rLinkColor) !important;
+	text-decoration: var(--rLinkTextDecoration, none) !important;
+}
+
+.text-underlined{
+    /*
+        1. I use pixels units because others units (em, rem, vw, vh, etc) can
+        lead to the mistake of displaying a circumcised line
+    */
+
+    --uiTextUnderlinedLineHeight: var(--textUnderlinedLineHeight, 2px); /* 1 */
+    --uiTextUnderlinedLineGap: var(--textUnderlinedLineGap, .5rem);
+    --uiTextUnderlinedPaddingBottom: calc(var(--uiTextUnderlinedLineHeight) + var(--uiTextUnderlinedLineGap));
+
+    padding-bottom: var(--uiTextUnderlinedPaddingBottom) !important;
+    position: var(--textUnderlinedPosition, relative) !important;
+		z-index: var(--textUnderlinedZindex, 1) !important;
+}
+
+.text-underlined::after{
+    content: "";
+    width: var(--textUnderlinedLineWidht, 100%) !important;
+    height: var(--uiTextUnderlinedLineHeight) !important;
+		background-image: var(--textUnderlinedBackgroundImage, linear-gradient(to top, var(--textUnderlinedLineColor, currentColor) 30%, rgba(0, 0, 0, 0) 45%)) !important;
+
+    position: absolute;
+    left: var(--textUnderlinedLineLeft, 0) !important;
+    bottom: var(--textUnderlinedLineBottom, 0) !important;
+		z-index: var(--textUnderlinedLineZindex, -1) !important;
+}
+
+/*
+=====
+CORE
+=====
+*/
+
+.link{
+	--textUnderlinedLineHeight: 100%;
+	--textUnderlinedLineGap: 0;
+	--textUnderlinedLineColor: lightblue;
+	
+	padding-left: .75rem;
+	padding-right: .75rem;
+}
+
+.link::after{
+	will-change: width;
+	transition: width .1s ease-out;
+	transform: rotate(-2deg);
+	transform-origin: left bottom;
+}
+
+.link:hover{
+	--textUnderlinedLineWidht: 0;
+}
+
+.link:hover::after{
+	transition-duration: .15s;
+}
+
+/*
+* These styles for text decoration. The demo will be work without it
+*/
+
+.link{
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.link:focus{
+	outline: 2px solid lightblue;
+	outline-offset: .5rem;
+}
+
+.drawerContent{
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
 }
 
-.App-link {
-  color: #61dafb;
-}
+/* --- MEDIA QUERY --- */
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (min-width: 800px) {
+  .mainContainer{
+    align-items: flex-start;
+
   }
-  to {
-    transform: rotate(360deg);
+
+  .cardBody{
+    display: flex;
+    width: auto;
+    flex-direction: row;
+    float: right;
+    flex-wrap: wrap;
+    margin-left: 3rem;
+    padding: 10px;
+  }
+  .leftBox{
+    position: absolute;
+    z-index: 9;
+    
+  }
+  .login {
+    top: 200px;
   }
 }
